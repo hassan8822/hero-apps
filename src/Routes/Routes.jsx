@@ -10,6 +10,7 @@ import AppDetails from "../Components/AppDetails/AppDetails";
 
 import Installation from "../Pages/Installation/Installation";
 import Apps from "../Pages/Apps/Apps";
+import About from "../Components/About/About";
 
 
 
@@ -32,19 +33,19 @@ import Apps from "../Pages/Apps/Apps";
         Component:Apps,
 
       },
+      {
+        path:"/about",
+        Component:About,
+
+      },
      
       {
         path:"/installation",
         Component:Installation,
         
       },
-      {
-        path:"/about",
-        Component:Installation,
-
-      },
       
-
+      
       {
         path:"/appDetails/:id",
         loader:() => fetch('/AppsData.json'),
