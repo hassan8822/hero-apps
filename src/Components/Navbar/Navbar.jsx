@@ -1,5 +1,6 @@
 import { FaGithub } from "react-icons/fa";
 import { Link, NavLink } from "react-router";
+import logo from "../../assets/logo.png"
 
 
 const Navbar = () => {
@@ -30,7 +31,7 @@ const Navbar = () => {
       </ul>
     </div>
     <Link to ="/" className="flex  items-center gap-2  text-xl">
-      <img className='h-15'  src="/src/assets/logo.png" alt="" />
+      <img className='h-15'  src={logo} alt="Logo" />
        <span className="text-transparent bg-linear-to-r from-[#632EE3] to-[#9F62F2] bg-clip-text font-bold">
       HERO.IO
     </span>
@@ -46,7 +47,7 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a href="https://github.com/hassan8822"target="-blank" className=" btn  bg-linear-to-r from-[#632EE3] to-[#9F62F2] text-white " ><FaGithub size={20}></FaGithub>  Contribute
+    <a href="https://github.com/hassan8822"target="-blank" rel="noreferrer" className=" btn  bg-linear-to-r from-[#632EE3] to-[#9F62F2] text-white " ><FaGithub size={20}></FaGithub>  Contribute
     </a>
   </div>
 </div>
