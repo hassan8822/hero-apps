@@ -1,7 +1,13 @@
 import { Download, Star, ThumbsUp } from "lucide-react";
 import { useState } from "react";
-import {  useLoaderData, useParams } from "react-router";
+import {   useLoaderData, useNavigate, useParams } from "react-router";
 import { Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from "recharts";
+import { addToApps } from "../../utility/addToApps";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal = withReactContent(Swal)
+
 
 
 
@@ -12,12 +18,25 @@ const AppDetails = () => {
     const singleApp = data.find(app => app.id === parseInt(id));
     const [installed, setInstalled]= useState(false);
 
-    const handleInstall = () => {
+    const navigate =useNavigate();
+
+    const handleInstall = (id) => {
         setInstalled(true);
-        
+        MySwal.fire({
+  title: "Good job!",
+  text: "You Apps installed successfully !",
+  icon: "success",
+   confirmButtonColor: "#00D390",
+  confirmButtonText: "Nice!",
+  background: "#ffffff",
+  color: "#111827",
+});
+        addToApps(id);
+        navigate('/installation');
     }
 
-    
+
+
     const {image,title,description,downloads,ratingAvg,reviews,ratings} = singleApp || {};
 
 
@@ -57,12 +76,12 @@ const AppDetails = () => {
                             <p className="text-2xl font-black">{reviews}</p>
                         </div>
                         </div>
-                        <button  onClick={handleInstall}
+                        <button  onClick={() => handleInstall(id)}
                         disabled={installed}
                         className={`mt-4 px-14 py-2 rounded text-white font-semibold transition duration-300
                         ${installed  ?"bg-[#00D390] cursor-not-allowed":"bg-[#00D390] hover:bg-[#00D390]"  }`}
                         >
-                {installed ? "Uninstall" : "Install Now (290 MB)"}
+                {installed ? "Installed" : "Install Now (290 MB)"}
                   
             </button>
           

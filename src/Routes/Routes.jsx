@@ -41,6 +41,7 @@ import About from "../Components/About/About";
      
       {
         path:"/installation",
+           loader:() => fetch('/AppsData.json'),
         Component:Installation,
         
       },

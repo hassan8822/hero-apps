@@ -4,7 +4,12 @@ import { Link, NavLink } from "react-router";
 
 const Navbar = () => {
   const links = <>  
-  <NavLink to ="/" className={({isActive}) =>isActive ? "text-[#632EE3]" : "hover:text-[#632EE3]"}><li className="m-2 ">Home</li></NavLink>
+ <NavLink to="/" className={({isActive}) => isActive
+            ? "text-[#632EE3] font-bold"
+            : "hover:text-[#632EE3]"
+        }
+      ><li className="m-2">Home</li>
+      </NavLink>
   <NavLink to ="/about" className={({isActive}) =>isActive ? "text-[#632EE3]" : "hover:text-[#632EE3]"}><li className="m-2 ">About</li></NavLink>
    <NavLink to ="/apps" className={({isActive}) =>isActive ? "text-[#632EE3]" : "hover:text-[#632EE3]"}><li className="m-2 ">Apps</li></NavLink>
  
