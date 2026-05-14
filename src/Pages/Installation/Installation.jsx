@@ -9,6 +9,8 @@ const Installation = () => {
     const ourAppsData =useLoaderData();
     const [installedApps, setInstalledApps] = useState([]);
 
+      const [searchText, setSearchText] = useState("");
+
     useEffect(() => {
         const storedApps = getStoredApps();
         const ConvertedStoredApps = storedApps.map(id => parseInt(id));
@@ -41,7 +43,13 @@ const Installation = () => {
     );
 
     setInstalledApps(sortedApps);
-        }}
+        }};
+
+        const filteredApps = installedApps.filter(app =>
+        app.title.toLowerCase().includes(searchText.toLowerCase())
+    );
+
+      
 
 
     return (
@@ -52,6 +60,7 @@ const Installation = () => {
             
 
             </div>
+
             <div className="flex items-center justify-between mt-8 w-11/12 mx-auto">
                 <h2 className="text-xl font-semibold">{installedApps.length} Apps Installed</h2>
                 <details className="dropdown">
@@ -61,12 +70,23 @@ const Installation = () => {
              <li><a onClick={() => handleSort("Z-A")}>Z-A</a></li>
               </ul>
             </details>
+            </div>
+
+              <div className="w-1/6 mx-auto  mt-4">
+
+                <input
+                    type="text"
+                    placeholder="Search Apps..."
+                    value={searchText}
+                    onChange={(e) => setSearchText(e.target.value)}
+                    className="input input-bordered w-full"
+                />
               
             </div>
                <div className="flex flex-col mt-4 gap-6">
 
                 {
-                    installedApps.map(app => (
+                    filteredApps.map(app => (
 
                      <div
                         key={app.id}
@@ -127,6 +147,7 @@ const Installation = () => {
                 }
                </div>
         </div>
+        
     
       
     );
